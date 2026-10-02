@@ -1,4 +1,4 @@
-import { RoomType } from "./RoomType";
+import { RoomTypeUnion } from "./RoomType.js";
 
 /**
  * Jämför med din Java-klass:
@@ -29,7 +29,7 @@ export class Room {
   constructor(
     public id: number | null,
     public name: string,
-    public roomType: RoomType,
+    public roomType: RoomTypeUnion,
     public extraBeds: number = 0
   ) {}
 
@@ -38,7 +38,7 @@ export class Room {
   // anropas som en vanlig property (room.maxCapacity), INTE som en metod
   // (room.maxCapacity() skulle vara fel här).
   get maxCapacity(): number {
-    const base = this.roomType === RoomType.SINGLE ? 1 : 2;
+    const base = this.roomType === "SINGLE" ? 1 : 2;
     return base + this.extraBeds;
   }
 

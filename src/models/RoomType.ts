@@ -1,14 +1,3 @@
-// Java: public enum RoomType { SINGLE, DOUBLE }
-//
-// TS enums fungerar liknande, men kompileras (som standard) ner till ett
-// vanligt JS-objekt med dubbelriktad mappning. Många TS-utvecklare undviker
-// enum till förmån för en "union type" istället, se kommentar längst ner.
-export enum RoomType {
-  SINGLE = "SINGLE",
-  DOUBLE = "DOUBLE",
-}
+export type RoomTypeUnion = "SINGLE" | "DOUBLE";
 
-// Alternativ, mer "TS-idiomatisk" variant (ingen runtime-representation alls,
-// existerar bara vid kompilering - jämför med hur interfaces fungerar):
-//
-// export type RoomTypeUnion = "SINGLE" | "DOUBLE";
+// Jag övar på att använda type istället för enums. (Läs mer om det)

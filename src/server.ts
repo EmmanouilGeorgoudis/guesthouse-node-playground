@@ -1,9 +1,8 @@
 import express from "express";
-import { Room } from "./models/Room";
-import { RoomType } from "./models/RoomType";
-import { BookingService } from "./services/BookingService";
-import { FakeCustomerServiceClient } from "./services/CustomerServiceClient";
-import { createBookingRouter } from "./routes/bookingRoutes";
+import { Room } from "./models/Room.js";
+import { BookingService } from "./services/BookingService.js";
+import { FakeCustomerServiceClient } from "./services/CustomerServiceClient.js";
+import { createBookingRouter } from "./routes/bookingRoutes.js";
 
 /**
  * Jämför med:
@@ -31,8 +30,8 @@ app.use(express.json()); // krävs för att req.body ska fyllas i vid POST/PUT -
 // Manuell "wiring" - jämför med Spring DI-containern som byggde upp
 // samma graf av beroenden åt dig via @Autowired/component-scanning.
 const rooms = [
-  new Room(1, "101", RoomType.SINGLE),
-  new Room(2, "102", RoomType.DOUBLE, 1),
+  new Room(1, "101", "SINGLE"),
+  new Room(2, "102", "DOUBLE", 1),
 ];
 const bookingService = new BookingService(rooms, new FakeCustomerServiceClient([1, 42]));
 
